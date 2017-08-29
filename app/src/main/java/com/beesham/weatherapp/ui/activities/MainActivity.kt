@@ -1,11 +1,11 @@
-package com.beesham.weatherapp.activities
+package com.beesham.weatherapp.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.beesham.weatherapp.R
-import com.beesham.weatherapp.adapters.ForecastListAdapter
+import com.beesham.weatherapp.ui.adapters.ForecastListAdapter
 
 class MainActivity : AppCompatActivity() {
 
