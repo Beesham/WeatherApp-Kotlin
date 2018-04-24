@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import com.beesham.weatherapp.R
 import com.beesham.weatherapp.data.ForecastRequest
+import com.beesham.weatherapp.domain.commands.RequestForecastCommand
 import com.beesham.weatherapp.ui.adapters.ForecastListAdapter
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
@@ -29,14 +30,12 @@ class MainActivity : AppCompatActivity() {
 
         val forecastList = findViewById<RecyclerView>(R.id.forecastList) as RecyclerView
         forecastList.layoutManager = LinearLayoutManager(this)
-        forecastList.adapter = ForecastListAdapter(items)
-
-        val url = "http://api.openweathermap.org/data/2.5/forecast/daily?" +
-                "APPID=15646a06818f61f7b8d7823ca833e1ce&q=94043&mode=json&units=metric&cnt=7"
 
         doAsync {
-            ForecastRequest(url).run()
-            uiThread { longToast("ForecastRequest performed") }
+            val result = RequestForecastCommand("94043").execute()
+            uiThread {
+                forecastList.adapter = ForecastListAdapter(result)
+            }
         }
     }
 }
