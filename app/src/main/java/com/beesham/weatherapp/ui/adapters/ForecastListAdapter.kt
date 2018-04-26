@@ -17,7 +17,8 @@ import org.jetbrains.anko.find
  * Created by Beesham on 8/28/2017.
  */
 
-class ForecastListAdapter(private val weekForecast: ForecastList, private val itemClick: ForecastListAdapter.OnItemClickListener):
+class ForecastListAdapter(private val weekForecast: ForecastList,
+                          private val itemClick: (Forecast) -> Unit):
         RecyclerView.Adapter<ForecastListAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -32,7 +33,7 @@ class ForecastListAdapter(private val weekForecast: ForecastList, private val it
         return ViewHolder(view, itemClick)
     }
 
-    class ViewHolder(view: View, private val itemClick: OnItemClickListener) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View, private val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
         private val iconView = view.find<ImageView>(R.id.icon)
         private val dateView = view.find<TextView>(R.id.date)
         private val descriptionView = view.find<TextView>(R.id.description)

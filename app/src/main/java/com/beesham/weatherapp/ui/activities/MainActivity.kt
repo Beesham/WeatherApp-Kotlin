@@ -9,6 +9,7 @@ import com.beesham.weatherapp.data.ForecastRequest
 import com.beesham.weatherapp.domain.commands.RequestForecastCommand
 import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.ui.adapters.ForecastListAdapter
+import kotlinx.android.synthetic.main.item_forecast.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
 import org.jetbrains.anko.toast
@@ -26,12 +27,8 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val result = RequestForecastCommand("94043").execute()
             uiThread {
-                forecastList.adapter = ForecastListAdapter(result,
-                        object : ForecastListAdapter.OnItemClickListener{
-                            override fun invoke(forecast: Forecast) {
-                                toast(forecast.date)
-                            }
-                        })
+                val adapter = ForecastListAdapter(result) { forecast ->  toast(forecast.date) }
+                forecastList.adapter = adapter
             }
         }
     }
