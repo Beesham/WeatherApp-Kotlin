@@ -9,6 +9,7 @@ import com.beesham.weatherapp.data.ForecastRequest
 import com.beesham.weatherapp.domain.commands.RequestForecastCommand
 import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.ui.adapters.ForecastListAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_forecast.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.longToast
@@ -21,7 +22,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val forecastList = findViewById<RecyclerView>(R.id.forecastList)
         forecastList.layoutManager = LinearLayoutManager(this)
 
         doAsync {

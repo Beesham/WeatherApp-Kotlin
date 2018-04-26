@@ -11,6 +11,7 @@ import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.domain.model.ForecastList
 import com.beesham.weatherapp.ui.utils.ctx
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.item_forecast.view.*
 import org.jetbrains.anko.find
 
 /**
@@ -34,19 +35,19 @@ class ForecastListAdapter(private val weekForecast: ForecastList,
     }
 
     class ViewHolder(view: View, private val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
-        private val iconView = view.find<ImageView>(R.id.icon)
+       /* private val iconView = view.find<ImageView>(R.id.icon)
         private val dateView = view.find<TextView>(R.id.date)
         private val descriptionView = view.find<TextView>(R.id.description)
         private val maxTemperatureView = view.find<TextView>(R.id.maxTemperature)
         private val minTemperatureView = view.find<TextView>(R.id.minTemperature)
-
+*/
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
                 //Picasso.with(itemView.ctx).load(iconUrl).into(iconView)
-                dateView.text = date
-                descriptionView.text = description
-                maxTemperatureView.text = "${high} \u00B0"
-                minTemperatureView.text = "${low} \u00B0"
+                itemView.date.text = date
+                itemView.description.text = description
+                itemView.maxTemperature.text = "${high} \u00B0"
+                itemView.minTemperature.text = "${low} \u00B0"
                 itemView.setOnClickListener { itemClick(this)}
 
             }
