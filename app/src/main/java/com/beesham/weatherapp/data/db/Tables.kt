@@ -1,6 +1,6 @@
 package com.beesham.weatherapp.data.db
 
-object CityForecasrTable {
+object CityForecastTable {
     val NAME = "CityForecast"
     val ID = "_id"
     val CITY = "city"
