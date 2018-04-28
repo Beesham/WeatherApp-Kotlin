@@ -1,7 +1,7 @@
 package com.beesham.weatherapp.ui
 
 import android.app.Application
-import com.beesham.weatherapp.ui.utils.DelegatesExt
+import com.beesham.weatherapp.extensions.DelegatesExt
 
 class App: Application() {
     companion object {

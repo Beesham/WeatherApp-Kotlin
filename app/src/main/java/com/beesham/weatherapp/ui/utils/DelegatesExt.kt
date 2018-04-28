@@ -1,4 +1,4 @@
-package com.beesham.weatherapp.ui.utils
+package com.beesham.weatherapp.extensions
 
 import kotlin.reflect.KProperty
 
