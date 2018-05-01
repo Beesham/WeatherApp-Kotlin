@@ -1,4 +1,4 @@
-package com.beesham.weatherapp.domain.mappers
+package com.beesham.weatherapp.data.server
 
 import com.beesham.weatherapp.data.Forecast
 import com.beesham.weatherapp.data.ForecastResult
@@ -11,9 +11,9 @@ import com.beesham.weatherapp.domain.model.Forecast as ModelForecast
  * Created by Beesham on 2017-09-10.
  */
 
-class ForecastDataMapper {
+class ServerDataMapper {
 
-    fun convertFromDataModel(zipCode: Long, forecast: ForecastResult) = with(forecast) {
+    fun convertToDomain(zipCode: Long, forecast: ForecastResult) = with(forecast) {
         ForecastList(zipCode, city.name, city.country, convertForecastListToDomain(list))
     }
 

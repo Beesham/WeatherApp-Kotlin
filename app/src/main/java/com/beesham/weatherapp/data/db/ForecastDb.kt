@@ -1,6 +1,6 @@
 package com.beesham.weatherapp.data.db
 
-import com.beesham.weatherapp.domain.mappers.ForecastDataMapper
+import com.beesham.weatherapp.domain.dataSource.ForecastDataSource
 import com.beesham.weatherapp.domain.model.ForecastList
 import com.beesham.weatherapp.extensions.clear
 import com.beesham.weatherapp.extensions.parseList
@@ -11,9 +11,11 @@ import org.jetbrains.anko.db.select
 
 class ForecastDb(
         val forecastDbHelper: ForecastDbHelper = ForecastDbHelper.instance,
-        val dataMapper: DbDataMapper = DbDataMapper()) {
+        val dataMapper: DbDataMapper = DbDataMapper()): ForecastDataSource {
 
-    fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use{
+
+
+    override fun requestForecastByZipCode(zipCode: Long, date: Long) = forecastDbHelper.use{
         val dailyRequest = "${DayForecastTable.CITY_ID} = ? " +
                 "AND ${DayForecastTable.DATE} >= ?"
 
