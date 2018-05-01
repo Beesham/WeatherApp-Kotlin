@@ -2,6 +2,7 @@ package com.beesham.weatherapp.domain.dataSource
 
 import com.beesham.weatherapp.data.db.ForecastDb
 import com.beesham.weatherapp.data.server.ForecastServer
+import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.domain.model.ForecastList
 import com.beesham.weatherapp.extensions.firstResult
 
@@ -12,7 +13,14 @@ class ForecastProvider(val sources: List<ForecastDataSource> = ForecastProvider.
     }
 
     fun requestByZipCode(zipCode: Long, days: Int): ForecastList
-            = sources.firstResult { requestSource(it, days, zipCode)}
+            = requestToSources {
+        val res = it.requestForecastByZipCode(zipCode, todayTimeSpan())
+        if (res != null && res.size >= days) res else null
+    }
+
+    fun requestForecast(id: Long): Forecast = requestToSources {
+        it.requestDayForecast(id)
+    }
 
     fun requestSource(source: ForecastDataSource, days: Int, zipCode: Long): ForecastList? {
         val res = source.requestForecastByZipCode(zipCode, todayTimeSpan())
@@ -20,4 +28,6 @@ class ForecastProvider(val sources: List<ForecastDataSource> = ForecastProvider.
     }
 
     private fun todayTimeSpan() = System.currentTimeMillis() / DAY_IN_MILLIS * DAY_IN_MILLIS
+
+    private fun <T: Any> requestToSources(f: (ForecastDataSource) -> T?) :T = sources.firstResult { f(it)}
 }
