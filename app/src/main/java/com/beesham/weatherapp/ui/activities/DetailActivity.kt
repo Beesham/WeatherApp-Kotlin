@@ -2,11 +2,11 @@ package com.beesham.weatherapp.ui.activities
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.appcompat.R.attr.color
 import android.widget.TextView
 import com.beesham.weatherapp.R
 import com.beesham.weatherapp.domain.commands.RequestDayForecastCommand
 import com.beesham.weatherapp.domain.model.Forecast
+import com.beesham.weatherapp.extensions.color
 import com.beesham.weatherapp.extensions.textColor
 import com.beesham.weatherapp.extensions.toDateString
 import com.squareup.picasso.Picasso
@@ -45,7 +45,7 @@ class DetailActivity : AppCompatActivity() {
         it.second.text = "${it.first.toString()}"
         it.second.textColor = color(when (it.first) {
             in -50..0 -> android.R.color.holo_red_dark
-            in 0..15 -> android.R.color.halo_orange_dark
+            in 0..15 -> android.R.color.holo_orange_dark
             else -> android.R.color.holo_green_dark
         })
     }
