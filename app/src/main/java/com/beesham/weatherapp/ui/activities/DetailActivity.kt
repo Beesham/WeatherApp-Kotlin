@@ -35,7 +35,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun bindForecast(forecast: Forecast) = with(forecast) {
-        //Picasso.with(ctx).load(iconUrl).into(icon)
+        Picasso.with(ctx).load(iconUrl).into(icon)
         supportActionBar?.subtitle = date.toDateString(DateFormat.FULL)
         weatherDescription.text = description
         bindWeather(high to maxTemperature, low to minTemperature)

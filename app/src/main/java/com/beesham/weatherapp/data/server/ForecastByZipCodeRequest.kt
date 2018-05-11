@@ -1,5 +1,6 @@
 package com.beesham.weatherapp.data.server
 
+import android.util.Log
 import com.beesham.weatherapp.data.ForecastResult
 import com.google.gson.Gson
 import java.net.URL
@@ -17,6 +18,7 @@ class ForecastByZipCodeRequest(private val zipCode: Long, val gson: Gson = Gson(
 
     fun execute(): ForecastResult {
         val forecastJsonStr = URL(COMPLETE_URL + zipCode).readText()
+        Log.d(this.javaClass.canonicalName, COMPLETE_URL + zipCode)
         return gson.fromJson(forecastJsonStr, ForecastResult::class.java)
     }
 }

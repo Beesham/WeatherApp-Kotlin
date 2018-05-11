@@ -9,6 +9,7 @@ import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.domain.model.ForecastList
 import com.beesham.weatherapp.extensions.ctx
 import com.beesham.weatherapp.extensions.toDateString
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_forecast.view.*
 import java.text.DateFormat
 import java.util.*
@@ -36,7 +37,7 @@ class ForecastListAdapter(private val weekForecast: ForecastList,
     class ViewHolder(view: View, private val itemClick: (Forecast) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bindForecast(forecast: Forecast) {
             with(forecast) {
-                //Picasso.with(itemView.ctx).load(iconUrl).into(itemId.icon)
+                Picasso.with(itemView.ctx).load(iconUrl).into(itemView.icon)
                 itemView.date.text = date.toDateString()
                 itemView.description.text = description
                 itemView.maxTemperature.text = "${high} \u00B0"

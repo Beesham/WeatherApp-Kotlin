@@ -1,5 +1,6 @@
 package com.beesham.weatherapp.data.db
 
+import android.util.Log
 import com.beesham.weatherapp.domain.model.Forecast
 import com.beesham.weatherapp.domain.model.ForecastList
 
@@ -21,6 +22,7 @@ class DbDataMapper{
     }
 
     fun convertDayToDomain(dayForecast: DayForecast) = with(dayForecast) {
+        Log.d(this.javaClass.canonicalName, dayForecast._id.toString())
         Forecast(_id, date, description, high, low, iconUrl)
     }
 }

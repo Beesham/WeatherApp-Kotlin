@@ -20,7 +20,8 @@ class ForecastDbHelper(): ManagedSQLiteOpenHelper(App.instance,
                 CityForecastTable.COUNTRY to TEXT)
 
         db.createTable(DayForecastTable.NAME, true,
-                DayForecastTable.ID to SqlType.create("INTEGER PRIMARY_KEY AUTO_INCREMENT"),
+                //DayForecastTable.ID to INTEGER + PRIMARY_KEY + AUTOINCREMENT,
+                DayForecastTable.ID to SqlType.create("INTEGER PRIMARY KEY AUTOINCREMENT"),
                 DayForecastTable.DATE to INTEGER,
                 DayForecastTable.DESCRIPTION to TEXT,
                 DayForecastTable.HIGH to INTEGER,

@@ -25,7 +25,9 @@ class ForecastDb(
                 .whereSimple("${CityForecastTable.ID} = ?", zipCode.toString())
                 .parseOpt { CityForecast(HashMap(it), dailyForecast)}
 
-        if(city != null) dataMapper.convertToDomain(city) else null
+        if(city != null) {
+            dataMapper.convertToDomain(city)
+        } else null
     }
 
     fun saveForecast(forecast: ForecastList) = forecastDbHelper.use {
