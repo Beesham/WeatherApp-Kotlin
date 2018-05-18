@@ -37,6 +37,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.anko:anko-coroutines:$anko_version"
+
 }
 // REQUIRED: Google's new Maven repo is required for the latest
 // support library that is compatible with Android 8.0
